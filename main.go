@@ -1,6 +1,7 @@
 package main
 
 import (
+	"sync"
 	"image/color"
 	"log"
 
@@ -18,6 +19,7 @@ var (
 	green = color.RGBA{10, 255, 50, 255}
 	boids [boidCount]*Boid
 	boidMap [screenWidth + 1][screenHeight + 1]int
+	lock = sync.Mutex{}
 )
 
 func update(screen *ebiten.Image) error {
